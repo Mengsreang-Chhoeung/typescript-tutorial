@@ -20,7 +20,6 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "sourceMap": true,
     "outDir": "ts-built",
     "rootDir": "app"
   }
