@@ -110,6 +110,45 @@ let noValue: undefined = undefined;
 let anyTypeYouWant: any = "Hello World";
 ```
 
+## អំពី Variable ក្នុង TypeScript
+
+> សម្រាប់ការបង្កើតអញ្ញតនៅក្នុង TypeScript គឺមានទម្រង់ដូចខាងក្រោម:
+
+```
+// declare a variable with type and value
+let name : string = "mengsreang";
+
+// declare a variable with type and no value
+let name : string;
+
+// declare a variable with value and no type
+let name = "mengsreang";
+
+// delcare a variable with no type and no value
+let name;
+```
+
+> សម្រាប់ keyword ដែលយកមកសម្រាប់បង្កើតអញ្ញាតគឺមាន ៣ :
+
+```
+  var, let, const
+```
+
+## អំពី Math
+
+> Math នៅក្នុង TypeScript មាន Operator ជាច្រើនដែលយើងអាចប្រើប្រាស់បានសម្រាប់គណនាចំនួនលេខ។ Operators ទាំងនោះមានដូចខាងក្រោម:
+
+| Operator                       | Example    |
+| ------------------------------ | :--------- |
+| + (Addition) បូក               | $a + $b    |
+| - (Subtraction) ដក             | $a – $b    |
+| \* (Multiplication) គុណ        | $a \* $b   |
+| / (Division) ចែក               | $a / $b    |
+| % (Modulus) ចែករកសំណល់         | $a % $b    |
+| \*\*(Exponentiation) និទស្សន្ត | $a \*\* $b |
+
+---
+
 - Array
 
 ```
