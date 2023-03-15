@@ -15,7 +15,7 @@
 - ដើម្បីបញ្ជាក់ថាអ្នកបានទាញយកបាន TypeScript មកដាក់ក្នុងម៉ាស៊ីនកុំព្យូទ័រហើយឬនៅ អ្នកអាចវាយ command ខាងក្រោមប៉ុន្មានដើម្បីបញ្ជាក់បានដូចជា: `tsc --version` ឬ `tsc --help`
 - ចំណុចបន្ទាប់អ្នកត្រូវការ config តិចតួចទាក់ទងនឹង Project TypeScript របស់អ្នកគឺបង្កើតឯកសារថ្មីមួយនៅក្នុង Project របស់អ្នកដោយដាក់ឈ្មោះឯកសារឈ្មោះថា `tsconfig.json` បន្ទាប់មកសរសេរ `json` ដូចខាងក្រោមទៅក្នុង `tsconfig.json`:
 
-```
+```shell
 {
   "compilerOptions": {
     "target": "es5",
@@ -35,21 +35,21 @@
 
 > index.ts
 
-```
+```ts
 let message: string = "Hello World";
 console.log(message);
 ```
 
 > index.js
 
-```
+```js
 let message = "Hello World";
 console.log(message);
 ```
 
 > Compile time
 
-```
+```bash
 $ node index.js
 Hello World
 ```
@@ -76,37 +76,37 @@ Hello World
 
 - Number
 
-```
+```ts
 let newNum: number = 100;
 ```
 
 - String
 
-```
+```ts
 let lastName: string = "mengsreang";
 ```
 
 - Boolean
 
-```
+```ts
 let married: boolean = false;
 ```
 
 - Null
 
-```
+```ts
 let noName: null = null;
 ```
 
 - Undefined
 
-```
+```ts
 let noValue: undefined = undefined;
 ```
 
 - Any
 
-```
+```ts
 let anyTypeYouWant: any = "Hello World";
 ```
 
@@ -114,7 +114,7 @@ let anyTypeYouWant: any = "Hello World";
 
 > សម្រាប់ការបង្កើតអញ្ញតនៅក្នុង TypeScript គឺមានទម្រង់ដូចខាងក្រោម:
 
-```
+```ts
 // declare a variable with type and value
 let name : string = "mengsreang";
 
@@ -130,7 +130,7 @@ let name;
 
 > សម្រាប់ keyword ដែលយកមកសម្រាប់បង្កើតអញ្ញាតគឺមាន ៣ :
 
-```
+```ts
   var, let, const
 ```
 
@@ -151,7 +151,7 @@ let name;
 
 - Array
 
-```
+```ts
 // array of number
 let score: number[] = [50, 30, 20];
 
@@ -164,7 +164,7 @@ let accepted: boolean[] = [true, false, true];
 
 - Function
 
-```
+```ts
 // function of void
 function greeting(name: string): void {
     console.log(`Hello ${name.toUpperCase()}!!!`);
@@ -186,7 +186,7 @@ getFullName('mengsreang', 'chhoeung');
 
 - Object
 
-```
+```ts
 // object of number
 function printNumber(num: {a: number, b: number}):void {
     console.log(`The number a: ${num.a} and also b: ${num['b']}`);
@@ -208,7 +208,7 @@ printOptionalAddress({address1: 'Phnom Penh'});
 
 - Union
 
-```
+```ts
 // union of number or string
 function printId(id: number | string): void {
     console.log(`Your ID: ${id}`);
@@ -235,7 +235,7 @@ printBothString('mengsreang');
 
 - Type
 
-```
+```ts
 type Point = {
     m: number;
     n: number;
@@ -249,7 +249,7 @@ printPoint({m: 75, n: 60});
 
 - Interface
 
-```
+```ts
 interface Person {
     name: string;
     sex: string;
