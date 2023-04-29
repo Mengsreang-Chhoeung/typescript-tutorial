@@ -125,7 +125,7 @@ npx tsc --init --rootDir src --outDir build \
 
 At this point, you should have a `tsconfig.json` that looks like this:
 
-```json
+```js
 {
   "compilerOptions": {
     /* Basic Options */
