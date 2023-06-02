@@ -229,7 +229,7 @@ touch src/index.ts
 And let's write some code.
 
 ```ts
-console.log("Hello world!");
+console.log('Hello world!');
 ```
 
 ### Compiling our TypeScript
@@ -245,8 +245,8 @@ npx tsc
 Check out `build/index.js`, we've compiled our first TypeScript file.
 
 ```js
-"use strict";
-console.log("Hello world!");
+'use strict';
+console.log('Hello world!');
 ```
 
 [🔼 Back to top](#typescript-tutorial)
@@ -332,7 +332,7 @@ In both examples below `firstName` is of type `string`
 **Explicit** - writing out the type:
 
 ```ts
-let firstName: string = "Dylan";
+let firstName: string = 'Dylan';
 ```
 
 **Explicit** type assignment are easier to read and more intentional.
@@ -340,7 +340,7 @@ let firstName: string = "Dylan";
 **Implicit** - TypeScript will "guess" the type, based on the assigned value:
 
 ```ts
-let firstName = "Dylan";
+let firstName = 'Dylan';
 ```
 
 > **Note:** Having TypeScript "guess" the type of a value is called infer.
@@ -354,14 +354,14 @@ Implicit assignment forces TypeScript to **infer** the value.
 TypeScript will throw an error if data types do not match.
 
 ```ts
-let firstName: string = "Dylan"; // type string
+let firstName: string = 'Dylan'; // type string
 firstName = 33; // attempts to re-assign the value to a different type
 ```
 
 **Implicit** type assignment would have made firstName less noticeable as a string, but both will throw an error:
 
 ```ts
-let firstName = "Dylan"; // inferred to type string
+let firstName = 'Dylan'; // inferred to type string
 firstName = 33; // attempts to re-assign the value to a different type
 ```
 
@@ -373,7 +373,7 @@ TypeScript may not always properly infer what the type of a variable may be. In 
 
 ```ts
 // Implicit any as JSON.parse doesn't know what type of data it returns so it can be "any" thing...
-const json = JSON.parse("55");
+const json = JSON.parse('55');
 // Most expect json to be an object, but it can be a string or a number like this example
 console.log(typeof json);
 ```
@@ -400,7 +400,7 @@ The example below does not use `any` and will throw an error:
  * Example `without any`
  **/
 let u = true;
-u = "string"; // Error: Type 'string' is not assignable to type 'boolean'.
+u = 'string'; // Error: Type 'string' is not assignable to type 'boolean'.
 Math.round(u); // Error: Argument of type 'boolean' is not assignable to parameter of type 'number'.
 ```
 
@@ -411,7 +411,7 @@ Setting `any` to the special type `any` disables type checking:
  * Example `with any`
  **/
 let v: any = true;
-v = "string"; // no error as it can be "any" type
+v = 'string'; // no error as it can be "any" type
 Math.round(v); // no error as it can be "any" type
 ```
 
@@ -425,15 +425,15 @@ TypeScript will prevent `unknown` types from being used, as shown in the below e
 
 ```ts
 let w: unknown = 1;
-w = "string"; // no error
+w = 'string'; // no error
 w = {
   runANonExistentMethod: () => {
-    console.log("I think therefore I am");
+    console.log('I think therefore I am');
   },
 } as { runANonExistentMethod: () => void };
 // How can we avoid the error for the code commented out below when we don't know the type?
 // w.runANonExistentMethod(); // Error: Object is of type 'unknown'.
-if (typeof w === "object" && w !== null) {
+if (typeof w === 'object' && w !== null) {
   (w as { runANonExistentMethod: Function }).runANonExistentMethod();
 }
 // Although we have to cast multiple times we can do a check in the if to secure our type and have a safer casting
@@ -474,7 +474,7 @@ Read more about arrays in our [JavaScript Array chapter](https://www.w3schools.c
 
 ```ts
 const names: string[] = [];
-names.push("Dylan"); // no error
+names.push('Dylan'); // no error
 // names.push(3); // Error: Argument of type 'number' is not assignable to parameter of type 'string'.
 ```
 
@@ -483,8 +483,8 @@ names.push("Dylan"); // no error
 The `readonly` keyword can prevent arrays from being changed.
 
 ```ts
-const names: readonly string[] = ["Dylan"];
-names.push("Jack"); // Error: Property 'push' does not exist on type 'readonly string[]'.
+const names: readonly string[] = ['Dylan'];
+names.push('Jack'); // Error: Property 'push' does not exist on type 'readonly string[]'.
 // try removing the readonly modifier and see if it works?
 ```
 
@@ -496,7 +496,7 @@ TypeScript can infer the type of an array if it has values.
 const numbers = [1, 2, 3]; // inferred to type number[]
 numbers.push(4); // no error
 // comment line below out to see the successful assignment
-numbers.push("2"); // Error: Argument of type 'string' is not assignable to parameter of type 'number'.
+numbers.push('2'); // Error: Argument of type 'string' is not assignable to parameter of type 'number'.
 let head: number = numbers[0]; // no error
 ```
 
@@ -517,7 +517,7 @@ To define a tuple, specify the type of each element in the array:
 let ourTuple: [number, boolean, string];
 
 // initialize correctly
-ourTuple = [5, false, "Coding God was here"];
+ourTuple = [5, false, 'Coding God was here'];
 ```
 
 As you can see we have a number, boolean and a string. But what happens if we try to set them in the wrong order:
@@ -527,7 +527,7 @@ As you can see we have a number, boolean and a string. But what happens if we tr
 let ourTuple: [number, boolean, string];
 
 // initialized incorrectly which throws an error
-ourTuple = [false, "Coding God was mistaken", 5];
+ourTuple = [false, 'Coding God was mistaken', 5];
 ```
 
 > Even though we have a `boolean`, `string`, and `number` the order matters in our tuple and will throw an error.
@@ -542,9 +542,9 @@ Tuples only have strongly defined types for the initial values:
 // define our tuple
 let ourTuple: [number, boolean, string];
 // initialize correctly
-ourTuple = [5, false, "Coding God was here"];
+ourTuple = [5, false, 'Coding God was here'];
 // We have no type safety in our tuple for indexes 3+
-ourTuple.push("Something new and wrong");
+ourTuple.push('Something new and wrong');
 console.log(ourTuple);
 ```
 
@@ -555,10 +555,10 @@ You see the new valueTuples only have strongly defined types for the initial val
 const ourReadonlyTuple: readonly [number, boolean, string] = [
   5,
   true,
-  "The Real Coding God",
+  'The Real Coding God',
 ];
 // throws error as it is readonly.
-ourReadonlyTuple.push("Coding God took a day off");
+ourReadonlyTuple.push('Coding God took a day off');
 ```
 
 To learn more about access modifiers like `readonly` go to our section on them here: [TypeScript Classes](https://www.w3schools.com/typescript/typescript_classes.php).
@@ -596,8 +596,8 @@ Read more about objects in our [JavaScript Objects chapter](https://www.w3school
 
 ```ts
 const car: { type: string; model: string; year: number } = {
-  type: "Toyota",
-  model: "Corolla",
+  type: 'Toyota',
+  model: 'Corolla',
   year: 2009,
 };
 ```
@@ -610,9 +610,9 @@ TypeScript can infer the types of properties based on their values.
 
 ```ts
 const car = {
-  type: "Toyota",
+  type: 'Toyota',
 };
-car.type = "Ford"; // no error
+car.type = 'Ford'; // no error
 car.type = 2; // Error: Type 'number' is not assignable to type 'string'.
 ```
 
@@ -626,7 +626,7 @@ Optional properties are properties that don't have to be defined in the object d
  **/
 const car: { type: string; mileage: number } = {
   // Error: Property 'mileage' is missing in type '{ type: string; }' but required in type '{ type: string; mileage: number; }'.
-  type: "Toyota",
+  type: 'Toyota',
 };
 car.mileage = 2000;
 ```
@@ -637,7 +637,7 @@ car.mileage = 2000;
  **/
 const car: { type: string; mileage?: number } = {
   // no error
-  type: "Toyota",
+  type: 'Toyota',
 };
 car.mileage = 2000;
 ```
@@ -649,7 +649,7 @@ Index signatures can be used for objects without a defined list of properties.
 ```ts
 const nameAgeMap: { [index: string]: number } = {};
 nameAgeMap.Jack = 25; // no error
-nameAgeMap.Mark = "Fifty"; // Error: Type 'string' is not assignable to type 'number'.
+nameAgeMap.Mark = 'Fifty'; // Error: Type 'string' is not assignable to type 'number'.
 ```
 
 > Index signatures like this one can also be expressed with utility types like `Record<string, number>`. Learn more about utility types like this in our [TypeScript Utility Types](https://www.w3schools.com/typescript/typescript_utility_types.php) chapter.
@@ -677,7 +677,7 @@ let currentDirection = CardinalDirections.North;
 // logs 0
 console.log(currentDirection);
 // throws error as 'North' is not a valid enum
-currentDirection = "North"; // Error: "North" is not assignable to type 'CardinalDirections'.
+currentDirection = 'North'; // Error: "North" is not assignable to type 'CardinalDirections'.
 ```
 
 ### Numeric Enums - Initialized
@@ -720,10 +720,10 @@ Enums can also contain `strings`. This is more common than numeric enums, becaus
 
 ```ts
 enum CardinalDirections {
-  North = "North",
-  East = "East",
-  South = "South",
-  West = "West",
+  North = 'North',
+  East = 'East',
+  South = 'South',
+  West = 'West',
 }
 // logs "North"
 console.log(CardinalDirections.North);
@@ -758,8 +758,8 @@ type Car = {
 };
 
 const carYear: CarYear = 2001;
-const carType: CarType = "Toyota";
-const carModel: CarModel = "Corolla";
+const carType: CarType = 'Toyota';
+const carModel: CarModel = 'Corolla';
 const car: Car = {
   year: carYear,
   type: carType,
@@ -802,7 +802,7 @@ interface ColoredRectangle extends Rectangle {
 const coloredRectangle: ColoredRectangle = {
   height: 20,
   width: 10,
-  color: "red",
+  color: 'red',
 };
 ```
 
@@ -823,7 +823,7 @@ function printStatusCode(code: string | number) {
   console.log(`My status code is ${code}.`);
 }
 printStatusCode(404);
-printStatusCode("404");
+printStatusCode('404');
 ```
 
 ### Union Type Errors
@@ -865,7 +865,7 @@ The type `void` can be used to indicate a function doesn't return any value.
 
 ```ts
 function printHello(): void {
-  console.log("Hello!");
+  console.log('Hello!');
 }
 ```
 
@@ -950,7 +950,7 @@ Casting is the process of overriding a type.
 A straightforward way to cast a variable is using the `as` keyword, which will directly change the type of the given variable.
 
 ```ts
-let x: unknown = "hello";
+let x: unknown = 'hello';
 console.log((x as string).length);
 ```
 
@@ -974,7 +974,7 @@ The Force casting section below covers how to override this.
 Using <> works the same as casting with `as`.
 
 ```ts
-let x: unknown = "hello";
+let x: unknown = 'hello';
 console.log((<string>x).length);
 ```
 
@@ -985,7 +985,7 @@ console.log((<string>x).length);
 To override type errors that TypeScript may throw when casting, first cast to `unknown`, then to the target type.
 
 ```ts
-let x = "hello";
+let x = 'hello';
 console.log((x as unknown as number).length); // x is not actually a number so this will return undefined
 ```
 
@@ -1007,7 +1007,7 @@ class Person {
 }
 
 const person = new Person();
-person.name = "Jane";
+person.name = 'Jane';
 ```
 
 ### Members: Visibility
@@ -1033,7 +1033,7 @@ class Person {
   }
 }
 
-const person = new Person("Jane");
+const person = new Person('Jane');
 console.log(person.getName()); // person.name isn't accessible from outside the class since it's private
 ```
 
@@ -1053,7 +1053,7 @@ class Person {
   }
 }
 
-const person = new Person("Jane");
+const person = new Person('Jane');
 console.log(person.getName());
 ```
 
@@ -1075,7 +1075,7 @@ class Person {
   }
 }
 
-const person = new Person("Jane");
+const person = new Person('Jane');
 console.log(person.getName());
 ```
 
@@ -1217,7 +1217,7 @@ Generics with functions help make more generalized methods which more accurately
 function createPair<S, T>(v1: S, v2: T): [S, T] {
   return [v1, v2];
 }
-console.log(createPair<string, number>("hello", 42)); // ['hello', 42]
+console.log(createPair<string, number>('hello', 42)); // ['hello', 42]
 ```
 
 > TypeScript can also infer the type of the generic parameter from the function parameters.
@@ -1245,7 +1245,7 @@ class NamedValue<T> {
   }
 }
 
-let value = new NamedValue<number>("myNumber");
+let value = new NamedValue<number>('myNumber');
 value.setValue(10);
 console.log(value.toString()); // myNumber: 10
 ```
@@ -1287,8 +1287,8 @@ class NamedValue<T = string> {
   }
 }
 
-let value = new NamedValue("myNumber");
-value.setValue("myValue");
+let value = new NamedValue('myNumber');
+value.setValue('myValue');
 console.log(value.toString()); // myNumber: myValue
 ```
 
@@ -1342,8 +1342,8 @@ interface Car {
 }
 
 let myCar: Required<Car> = {
-  make: "Ford",
-  model: "Focus",
+  make: 'Ford',
+  model: 'Focus',
   mileage: 12000, // `Required` forces mileage to be defined
 };
 ```
@@ -1372,8 +1372,8 @@ interface Person {
   location?: string;
 }
 
-const bob: Omit<Person, "age" | "location"> = {
-  name: "Bob",
+const bob: Omit<Person, 'age' | 'location'> = {
+  name: 'Bob',
   // `Omit` has removed age and location from the type and they can't be defined here
 };
 ```
@@ -1389,8 +1389,8 @@ interface Person {
   location?: string;
 }
 
-const bob: Pick<Person, "name"> = {
-  name: "Bob",
+const bob: Pick<Person, 'name'> = {
+  name: 'Bob',
   // `Pick` has only kept name, so age and location were removed from the type and they can't be defined here
 };
 ```
@@ -1448,10 +1448,10 @@ function printPersonProperty(person: Person, property: keyof Person) {
   console.log(`Printing person property ${property}: "${person[property]}"`);
 }
 let person = {
-  name: "Max",
+  name: 'Max',
   age: 27,
 };
-printPersonProperty(person, "name"); // Printing person property name: "Max"
+printPersonProperty(person, 'name'); // Printing person property name: "Max"
 ```
 
 ### `keyof` with index signatures
@@ -1480,7 +1480,7 @@ TypeScript has a powerful system to deal with `null` or `undefined` values.
 
 ```ts
 let value: string | undefined | null = null;
-value = "hello";
+value = 'hello';
 value = undefined;
 ```
 
@@ -1500,7 +1500,7 @@ interface House {
 function printYardSize(house: House) {
   const yardSize = house.yard?.sqft;
   if (yardSize === undefined) {
-    console.log("No yard");
+    console.log('No yard');
   } else {
     console.log(`Yard is ${yardSize} sqft`);
   }
@@ -1519,7 +1519,7 @@ Nullish Coalescence is another JavaScript feature that also works well with Type
 
 ```ts
 function printMileage(mileage: number | null | undefined) {
-  console.log(`Mileage: ${mileage ?? "Not Available"}`);
+  console.log(`Mileage: ${mileage ?? 'Not Available'}`);
 }
 
 printMileage(null); // Prints 'Mileage: Not Available'
@@ -1532,10 +1532,10 @@ TypeScript's inference system isn't perfect, there are times when it makes sense
 
 ```ts
 function getValue(): string | undefined {
-  return "hello";
+  return 'hello';
 }
 let value = getValue();
-console.log("value length: " + value!.length);
+console.log('value length: ' + value!.length);
 ```
 
 > Just like casting, this can be unsafe and should be used with care.
@@ -1577,11 +1577,21 @@ No other steps are usually needed to use the types after installing the declarat
 
 [🔼 Back to top](#typescript-tutorial)
 
+## Leetcode Problems & Solutions
+
+Here are the list of problems and includes solutions with TypeScript code:
+
+- [2235. Add Two Integers](https://github.com/Mengsreang-Chhoeung/typescript-tutorial/tree/main/src/leetcode/2235-add-two-integers)
+
+[🔼 Back to top](#typescript-tutorial)
+
 ### 📜 References
 
 - [W3Schools](https://www.w3schools.com/typescript)
 
 - [TypeScript Documentation](https://www.typescriptlang.org/docs)
+
+- [Leetcode](https://leetcode.com)
 
 ### 🤝 Contributors
 
